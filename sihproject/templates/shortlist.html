@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Saved Internships{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="card p-4 shadow-sm" style="border-radius: 15px;">
+        <h1 class="text-center text-primary fw-bold mb-4">
+            <i class="fas fa-bookmark me-2"></i> {{ _.shortlist_heading }}
+        </h1>
+        
+        {% if saved %}
+            <div class="list-group">
+            {% for internship in saved %}
+                <div class="list-group-item d-flex justify-content-between align-items-center mb-3 p-3 rounded-3 shadow-sm">
+                    <div class="details">
+                        <h4 class="mb-1 text-primary">{{ internship.title }}</h4>
+                        <p class="mb-1 text-secondary">
+                            <span class="badge bg-secondary me-2">{{ internship.sector }}</span>
+                            <span class="badge bg-info text-dark">{{ internship.location }}</span>
+                        </p>
+                        <p class="mb-0 text-muted small">
+                            <i class="fas fa-clock me-1"></i> {{ internship.duration }} | 
+                            <i class="fas fa-rupee-sign me-1"></i> {{ internship.stipend }}
+                        </p>
+                    </div>
+                    <div class="actions">
+                        <form action="{{ url_for('apply') }}" method="post" class="d-inline">
+                            <input type="hidden" name="internship" value="{{ internship.title }}">
+                            <button type="submit" class="btn btn-success me-2">{{ _.apply_button }}</button>
+                        </form>
+                        <form action="{{ url_for('remove_saved') }}" method="post" class="d-inline">
+                            <input type="hidden" name="internship" value="{{ internship.title }}">
+                            <button type="submit" class="btn btn-danger">{{ _.remove_button }}</button>
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        {% else %}
+            <div class="text-center py-5">
+                <p class="lead text-muted">{{ _.no_shortlist_msg }}</p>
+                <p class="text-muted">{{ _.start_shortlist_msg }}</p>
+                <a href="{{ url_for('predict') }}" class="btn btn-primary btn-lg mt-3">
+                    <i class="fas fa-search me-2"></i> {{ _.find_button }}
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

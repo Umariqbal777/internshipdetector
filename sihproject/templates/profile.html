@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<div class="container" style="max-width: 500px; padding: 40px; background: rgba(255, 255, 255, 0.95); border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); border: 1px solid #dcdcdc; animation: slideInUp 0.8s ease-out; box-sizing: border-box; text-align: center;">
+    <h1 style="color: #007bff; font-weight: 700; font-size: 2rem; margin-bottom: 10px;">👤 Your Profile</h1>
+    <p style="color: #7f8c8d; font-size: 0.9rem; margin-bottom: 25px;">Here's a quick look at your account details.</p>
+    <div style="background-color: #f0f2f6; padding: 25px; border-radius: 15px; border: 1px solid #d8e2ed;">
+        <p style="font-size: 1.1rem; color: #34495e; margin: 0;"><strong>Username:</strong> {{ username }}</p>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Saved Internships{% endblock %}
+
+{% block content %}
+<div class="container" style="max-width: 800px; width: 100%; background: rgba(255, 255, 255, 0.95); padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); border: 1px solid #dcdcdc; text-align: left;">
+    <h1 style="color: #007bff; font-weight: 700; font-size: 2rem; margin-bottom: 20px; text-align: center;">📌 {{ _.shortlist_heading }}</h1>
+    
+    {% if saved %}
+        <div class="card-list" style="display: flex; flex-direction: column; gap: 20px;">
+        {% for internship in saved %}
+            <div class="internship-item" style="display: flex; justify-content: space-between; align-items: center; padding: 20px; background: #f8f9fa; border-radius: 10px; border: 1px solid #e1e1e1; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                <div class="details">
+                    <h3 style="margin: 0 0 5px 0; color: #34495e;">{{ internship.title }}</h3>
+                    <p style="margin: 0; font-size: 0.9rem; color: #7f8c8d;">{{ internship.sector }} • {{ internship.location }}</p>
+                </div>
+                <div class="actions" style="display: flex; gap: 10px;">
+                    <form action="{{ url_for('apply') }}" method="post" style="display:inline;">
+                        <input type="hidden" name="internship" value="{{ internship.title }}">
+                        <button type="submit" style="background: #5cb85c; color: white; border: none; padding: 10px 15px; border-radius: 8px; cursor: pointer; transition: background 0.3s;">{{ _.apply_button }}</button>
+                    </form>
+                    <form action="{{ url_for('remove_saved') }}" method="post" style="display:inline;">
+                        <input type="hidden" name="internship" value="{{ internship.title }}">
+                        <button type="submit" style="background: #ff5a5f; color: white; border: none; padding: 10px 15px; border-radius: 8px; cursor: pointer; transition: background 0.3s;">{{ _.remove_button }}</button>
+                    </form>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    {% else %}
+        <p style="text-align: center; color: #7f8c8d; font-size: 1.1rem; margin-top: 30px;">{{ _.no_shortlist_msg }}</p>
+        <p style="text-align: center; color: #95a5a6; font-size: 0.9rem; margin-top: 10px;">{{ _.start_shortlist_msg }}</p>
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="{{ url_for('predict') }}" style="display: inline-block; padding: 12px 25px; background-color: #007bff; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 1rem;">
+                {{ _.find_button }}
+            </a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

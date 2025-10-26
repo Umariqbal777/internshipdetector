@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Find Internships{% endblock %}
+
+{% block content %}
+<div class="container" style="max-width: 500px; padding: 40px; background: rgba(255, 255, 255, 0.95); border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); border: 1px solid #dcdcdc; animation: slideInUp 0.8s ease-out; box-sizing: border-box; text-align: left;">
+    <h1 style="color: #007bff; font-weight: 700; font-size: 2rem; margin-bottom: 10px;">{{ _.predict_heading }}</h1>
+    <p style="color: #7f8c8d; font-size: 0.9rem; margin-bottom: 25px;">{{ _.predict_slogan }}</p>
+    
+    <form action="{{ url_for('predict') }}" method="post">
+        <div class="form-group" style="margin-bottom: 20px;">
+            <label for="education" style="display: block; margin-bottom: 8px; font-weight: 600;">{{ _.education_label }}</label>
+            <select id="education" name="education" class="input-field" style="width: 100%; padding: 12px 15px; border: 1px solid #bdc3c7; border-radius: 10px; box-sizing: border-box;">
+                <option value="School" {% if request.form.education == 'School' %}selected{% endif %}>{{ _.school_option }}</option>
+                <option value="College" {% if request.form.education == 'College' %}selected{% endif %}>{{ _.college_option }}</option>
+                <option value="Post Graduation" {% if request.form.education == 'Post Graduation' %}selected{% endif %}>{{ _.post_grad_option }}</option>
+                <option value="Any" {% if request.form.education == 'Any' %}selected{% endif %}>{{ _.any_option }}</option>
+            </select>
+        </div>
+        <div class="form-group" style="margin-bottom: 20px;">
+            <label for="skills" style="display: block; margin-bottom: 8px; font-weight: 600;">{{ _.skills_label }}</label>
+            <input type="text" id="skills" name="skills" class="input-field" placeholder="{{ _.skills_placeholder }}" required>
+        </div>
+        <div class="form-group" style="margin-bottom: 20px;">
+            <label for="sector_interest" style="display: block; margin-bottom: 8px; font-weight: 600;">{{ _.sector_label }}</label>
+            <select id="sector_interest" name="sector_interest" class="input-field" style="width: 100%; padding: 12px 15px; border: 1px solid #bdc3c7; border-radius: 10px; box-sizing: border-box;">
+                {% for sector in sectors %}
+                <option value="{{ sector }}">{{ sector }}</option>
+                {% endfor %}\n            </select>
+        </div>
+        <div class="form-group" style="margin-bottom: 30px;">
+            <label for="location_interest" style="display: block; margin-bottom: 8px; font-weight: 600;">{{ _.location_label }}</label>
+            <select id="location_interest" name="location_interest" class="input-field" style="width: 100%; padding: 12px 15px; border: 1px solid #bdc3c7; border-radius: 10px; box-sizing: border-box;">
+                {% for location in locations %}\n                <option value="{{ location }}">{{ location }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <button type="submit" style="width: 100%; padding: 15px; background: #007bff; border: none; color: white; border-radius: 10px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: background 0.3s ease, transform 0.2s, box-shadow 0.3s; box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);">
+            {{ _.find_button }}
+        </button>
+    </form>
+</div>
+<style>
+    @keyframes slideInUp {
+        from { transform: translateY(50px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+    @media (max-width: 600px) {
+        .container {
+            padding: 30px;
+        }
+        h1 {
+            font-size: 1.8rem;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+    }
+</style>
+{% endblock %}

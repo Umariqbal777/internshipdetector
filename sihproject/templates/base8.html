@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="{{ current_lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ _.title }}{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f0f2f6 0%, #d8e2ed 100%);
+            color: #2c3e50;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            animation: fadeInBackground 1s ease-in-out;
+            overflow-x: hidden;
+        }
+
+        @keyframes fadeInBackground {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .navbar {
+            width: 100%;
+            max-width: 900px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            backdrop-filter: blur(5px);
+            border: 1px solid #dcdcdc;
+        }
+
+        .navbar-logo {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .navbar-links a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 600;
+            transition: color 0.3s, transform 0.2s;
+            position: relative;
+        }
+
+        .navbar-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #007bff;
+            transition: width 0.3s;
+        }
+
+        .navbar-links a:hover {
+            color: #007bff;
+        }
+
+        .navbar-links a:hover::after {
+            width: 100%;
+        }
+
+        .flash-message {
+            text-align: center;
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            font-weight: 500;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .flash-message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .flash-message.info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        .flash-message.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .main-content {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        .logout-btn {
+            background: #ff5a5f;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 0.9rem;
+            text-decoration: none;
+        }
+
+        .logout-btn:hover {
+            background: #e04a4f;
+        }
+        
+        /* Language Button Styling */
+        .language-btn-group {
+            display: flex;
+            gap: 5px;
+        }
+
+        .language-btn-group a {
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: background-color 0.2s;
+        }
+
+        .language-btn-group a.active {
+            background-color: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
+        
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+                padding: 15px;
+            }
+            .navbar-links {
+                margin-top: 15px;
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            .navbar-links a {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="{{ url_for('home') }}" class="navbar-logo">{{ _.title }}</a>
+        <div class="navbar-links">
+            <a href="{{ url_for('home') }}">🏠 {{ _.home_link }}</a>
+            <a href="{{ url_for('dashboard') }}">📊 {{ _.dashboard_link }}</a>
+            <a href="{{ url_for('predict') }}">🎯 {{ _.predict_link }}</a>
+            <a href="{{ url_for('shortlist') }}">📌 {{ _.shortlist_link }}</a>
+            <a href="{{ url_for('logout') }}" class="logout-btn">{{ _.logout_button }}</a>
+            <div class="language-btn-group">
+                {% for lang in available_langs %}
+                <a href="{{ url_for('set_language', lang_code=lang.code) }}" class="{{ 'active' if current_lang == lang.code }}">{{ lang.name }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+        <div class="flash-message {{ category }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <div class="main-content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+
+        
+ {% extends "base.html" %}
+
+{% block title %}Home - PM Internship Scheme{% endblock %}
+
+{% block content %}
+<div class="container" style="text-align: center;">
+    <h1 style="color: #007bff; font-weight: 700;">Welcome, {{ session['username'] }}!</h1>
+    <p style="color: #555; font-size: 1.1rem; margin-top: 10px;">Find your perfect internship and jumpstart your career.</p>
+    <a href="{{ url_for('predict') }}" style="display: inline-block; padding: 15px 30px; margin-top: 30px; background-color: #007bff; color: white; text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 1.2rem; transition: background-color 0.3s, transform 0.2s;">
+        Start a Search! ✨
+    </a>
+</div>
+{% endblock %}

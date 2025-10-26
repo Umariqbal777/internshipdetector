@@ -1,0 +1,241 @@
+{% extends "base.html" %}
+
+{% block title %}Internship Recommendations{% endblock %}
+
+{% block content %}
+<div class="card-container">
+    {% if recommendation %}
+    <div class="recommendation-card" id="swipeCard">
+        <div class="card-image">
+            <span class="icon">💼</span>
+        </div>
+        <div class="card-content">
+            <h3>{{ recommendation['title'] }}</h3>
+            <p><strong>{{ _.sector_label }}:</strong> {{ recommendation['sector'] }}</p>
+            <p>📍 {{ _.location_label }}: {{ recommendation['location'] }}</p>
+            <p>⏰ {{ _.duration_label }}: {{ recommendation['duration'] }} {{ _.months_text }}</p>
+            <p>💰 {{ _.stipend_label }}: {{ recommendation['stipend'] }}</p>
+        </div>
+        <div class="overlay-label like" id="likeLabel">{{ _.like_label }}</div>
+        <div class="overlay-label nope" id="nopeLabel">{{ _.nope_label }}</div>
+    </div>
+    <div class="actions">
+        <form id="dislikeForm" action="{{ url_for('next_recommendation') }}" method="post" style="display:inline;">
+            <input type="hidden" name="action" value="dislike">
+            <button type="submit" class="action-btn no-btn">❌</button>
+        </form>
+        <form id="likeForm" action="{{ url_for('next_recommendation') }}" method="post" style="display:inline;">
+            <input type="hidden" name="action" value="like">
+            <input type="hidden" name="title" value="{{ recommendation['title'] }}">
+            <input type="hidden" name="sector" value="{{ recommendation['sector'] }}">
+            <input type="hidden" name="location" value="{{ recommendation['location'] }}">
+            <input type="hidden" name="duration" value="{{ recommendation['duration'] }}">
+            <input type="hidden" name="stipend" value="{{ recommendation['stipend'] }}">
+            <button type="submit" class="action-btn yes-btn">✅</button>
+        </form>
+    </div>
+    {% else %}
+    <div class="container" style="text-align: center;">
+        <h2 style="color: #ff5a5f;">{{ _.no_more_recs }}</h2>
+        <p style="color: #555;">{{ _.no_more_recs_msg }}</p>
+        <a href="{{ url_for('predict') }}" style="display: inline-block; padding: 12px 25px; margin-top: 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 8px; font-weight: 600;">
+            {{ _.find_button }}
+        </a>
+    </div>
+    {% endif %}
+</div>
+<style>
+    .card-container {
+        position: relative;
+        width: 100%;
+        max-width: 400px;
+        height: 500px;
+        perspective: 1000px;
+    }
+
+    .recommendation-card {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 25px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        border: 1px solid #dcdcdc;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        cursor: grab;
+    }
+
+    .recommendation-card.swiping {
+        transition: none;
+    }
+
+    .card-image {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background-color: #e6e6e6;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        font-size: 4rem;
+        color: #007bff;
+    }
+
+    .card-content h3 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-top: 0;
+        margin-bottom: 10px;
+        color: #007bff;
+    }
+    .card-content p {
+        font-size: 1rem;
+        color: #555;
+        margin: 8px 0;
+    }
+
+    .overlay-label {
+        position: absolute;
+        top: 20px;
+        font-size: 2.5rem;
+        font-weight: 700;
+        padding: 10px 20px;
+        border-radius: 10px;
+        opacity: 0;
+        transition: opacity 0.2s ease-in-out;
+        pointer-events: none;
+        text-transform: uppercase;
+    }
+
+    .overlay-label.like {
+        border: 3px solid #5cb85c;
+        color: #5cb85c;
+        transform: rotate(-10deg);
+        left: 20px;
+    }
+
+    .overlay-label.nope {
+        border: 3px solid #ff5a5f;
+        color: #ff5a5f;
+        transform: rotate(10deg);
+        right: 20px;
+    }
+
+    .actions {
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .action-btn {
+        border: none;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        font-size: 2rem;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .action-btn.no-btn {
+        background-color: #ff5a5f;
+    }
+    .action-btn.yes-btn {
+        background-color: #5cb85c;
+    }
+
+    .action-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const card = document.getElementById('swipeCard');
+        const likeForm = document.getElementById('likeForm');
+        const dislikeForm = document.getElementById('dislikeForm');
+        const likeLabel = document.getElementById('likeLabel');
+        const nopeLabel = document.getElementById('nopeLabel');
+        
+        let isDragging = false;
+        let startX;
+        let currentX;
+        const swipeThreshold = 100;
+
+        if (!card) {
+            return;
+        }
+
+        const handleStart = (e) => {
+            isDragging = true;
+            card.classList.add('swiping');
+            startX = e.type.startsWith('touch') ? e.touches[0].clientX : e.clientX;
+            currentX = startX;
+        };
+
+        const handleMove = (e) => {
+            if (!isDragging) return;
+
+            const clientX = e.type.startsWith('touch') ? e.touches[0].clientX : e.clientX;
+            const deltaX = clientX - startX;
+
+            const rotateDeg = deltaX / 20;
+            card.style.transform = `translateX(${deltaX}px) rotate(${rotateDeg}deg)`;
+            
+            const opacity = Math.min(Math.abs(deltaX) / swipeThreshold, 1.0);
+            if (deltaX > 0) {
+                likeLabel.style.opacity = opacity;
+                nopeLabel.style.opacity = 0;
+            } else {
+                nopeLabel.style.opacity = opacity;
+                likeLabel.style.opacity = 0;
+            }
+        };
+
+        const handleEnd = (e) => {
+            isDragging = false;
+            card.classList.remove('swiping');
+            const deltaX = (e.type.startsWith('touch') ? (e.changedTouches[0].clientX - startX) : (e.clientX - startX));
+            
+            if (deltaX > swipeThreshold) {
+                card.style.transform = `translateX(500px) rotate(30deg)`;
+                setTimeout(() => likeForm.submit(), 300);
+            } else if (deltaX < -swipeThreshold) {
+                card.style.transform = `translateX(-500px) rotate(-30deg)`;
+                setTimeout(() => dislikeForm.submit(), 300);
+            } else {
+                card.style.transform = `translateX(0) rotate(0)`;
+                likeLabel.style.opacity = 0;
+                nopeLabel.style.opacity = 0;
+            }
+        };
+
+        card.addEventListener('mousedown', handleStart);
+        card.addEventListener('mousemove', handleMove);
+        card.addEventListener('mouseup', handleEnd);
+        
+        card.addEventListener('touchstart', (e) => handleStart(e));
+        card.addEventListener('touchmove', (e) => handleMove(e));
+        card.addEventListener('touchend', (e) => handleEnd(e));
+
+        card.addEventListener('dragstart', (e) => e.preventDefault());
+    });
+</script>
+{% endblock %}

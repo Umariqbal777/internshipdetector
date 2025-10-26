@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% block title %}User Dashboard{% endblock %}
+
+{% block content %}
+<style>
+    .dashboard-header {
+        background: linear-gradient(45deg, #007bff, #00c6ff);
+        color: white;
+        padding: 50px 20px;
+        border-radius: 15px;
+        margin-bottom: 2rem;
+        text-align: center;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+    .dashboard-header h1 {
+        font-weight: 700;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    }
+    .info-card {
+        background: #ffffff;
+        border-radius: 15px;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s, box-shadow 0.3s;
+        height: 100%; /* Ensures all cards are the same height */
+    }
+    .info-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    }
+    .info-card .icon {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        color: #007bff;
+    }
+    .info-card h4 {
+        font-weight: 600;
+        color: #34495e;
+    }
+    .info-card p {
+        font-size: 1.1rem;
+        color: #555;
+    }
+</style>
+
+<div class="container my-5">
+    <div class="dashboard-header">
+        <h1>{{ _.welcome_message }} {{ user.username }}!</h1>
+        <p class="lead mt-3">Your personalized hub for finding internships.</p>
+    </div>
+
+    <div class="row text-center mb-5">
+        <div class="col-md-6 mb-4">
+            <div class="info-card">
+                <i class="fas fa-bookmark icon"></i>
+                <h4 class="mt-2">Saved Internships</h4>
+                <p class="h1 fw-bold text-primary">{{ shortlist_count }}</p>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <a href="{{ url_for('predict') }}" class="text-decoration-none">
+                <div class="info-card d-flex flex-column justify-content-center">
+                    <i class="fas fa-edit icon text-info"></i>
+                    <h4 class="mt-2">Update Your Preferences</h4>
+                    <p class="text-muted">Change your education, skills, and sector.</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="card p-4 shadow-sm" style="border-radius: 15px;">
+        <h3 class="mb-4 text-secondary fw-bold">Your Saved Preferences</h3>
+        {% if preferences %}
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            <div class="col">
+                <div class="info-card">
+                    <i class="fas fa-graduation-cap icon"></i>
+                    <h4 class="mt-2">{{ _.education_label }}</h4>
+                    <p>{{ preferences.education | default('Not Set') | title }}</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="info-card">
+                    <i class="fas fa-brain icon"></i>
+                    <h4 class="mt-2">{{ _.skills_label }}</h4>
+                    <p>{{ preferences.skills | default('Not Set') }}</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="info-card">
+                    <i class="fas fa-building icon"></i>
+                    <h4 class="mt-2">{{ _.sector_label }}</h4>
+                    <p>{{ preferences.sector | default('Not Set') }}</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="info-card">
+                    <i class="fas fa-map-marker-alt icon"></i>
+                    <h4 class="mt-2">{{ _.location_label }}</h4>
+                    <p>{{ preferences.location | default('Not Set') }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="mt-4 text-center">
+            <a href="{{ url_for('shortlist') }}" class="btn btn-primary btn-lg">
+                <i class="fas fa-heart me-1"></i> View Shortlist
+            </a>
+        </div>
+        {% else %}
+        <div class="text-center p-5 bg-light rounded">
+            <p class="lead text-muted">You have not saved any preferences yet.</p>
+            <p class="text-muted">Start a search to save your preferences and find recommendations.</p>
+            <a href="{{ url_for('predict') }}" class="btn btn-primary btn-lg mt-3">
+                <i class="fas fa-search me-1"></i> Start a Search!
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

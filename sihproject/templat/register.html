@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Register - {{ _.title }}{% endblock %}
+
+{% block content %}
+<div class="container" style="max-width: 400px; padding: 40px; background: rgba(255, 255, 255, 0.95); border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); border: 1px solid #dcdcdc; animation: slideInUp 0.8s ease-out; text-align: center; box-sizing: border-box;">
+    <div class="header" style="margin-bottom: 30px;">
+        <h1 style="color: #007bff; font-weight: 700; font-size: 2rem; margin-bottom: 5px;">{{ _.register_heading }}</h1>
+        <p style="color: #7f8c8d; font-size: 0.9rem; margin: 0;">{{ _.register_slogan }}</p>
+    </div>
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+        <div class="flash-message {{ category }}" style="text-align: center; padding: 12px; margin-bottom: 20px; border-radius: 10px; font-weight: 500;">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <form action="{{ url_for('do_register') }}" method="post">
+        <div class="form-group" style="margin-bottom: 25px; text-align: left;">
+            <label for="username" style="display: block; margin-bottom: 8px; font-weight: 600; color: #34495e; font-size: 0.9rem;">👤 {{ _.username_label }}</label>
+            <input type="text" id="username" name="username" class="input-field" style="width: 100%; padding: 12px 15px; border: 1px solid #bdc3c7; border-radius: 10px; box-sizing: border-box;" placeholder="{{ _.username_placeholder }}" required>
+        </div>
+        <div class="form-group" style="margin-bottom: 25px; text-align: left;">
+            <label for="password" style="display: block; margin-bottom: 8px; font-weight: 600; color: #34495e; font-size: 0.9rem;">🔒 {{ _.password_label }}</label>
+            <input type="password" id="password" name="password" class="input-field" style="width: 100%; padding: 12px 15px; border: 1px solid #bdc3c7; border-radius: 10px; box-sizing: border-box;" placeholder="{{ _.password_placeholder }}" required>
+        </div>
+        <button type="submit" style="width: 100%; padding: 15px; background: #007bff; border: none; color: white; border-radius: 10px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: background 0.3s ease, transform 0.2s, box-shadow 0.3s;">{{ _.register_button }}</button>
+    </form>
+    <a href="{{ url_for('login') }}" class="login-link" style="display: block; margin-top: 20px; font-size: 0.9rem; color: #007bff; text-decoration: none; transition: color 0.3s;">{{ _.login_link }}</a>
+</div>
+
+<style>
+    @media (max-width: 600px) {
+        .container {
+            padding: 30px;
+        }
+        .header h1 {
+            font-size: 1.8rem;
+        }
+        button {
+            font-size: 1rem;
+            padding: 12px;
+        }
+    }
+</style>
+{% endblock %}

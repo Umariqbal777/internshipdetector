@@ -1,0 +1,240 @@
+{% extends "base.html" %}
+
+{% block title %}Internship Recommendations{% endblock %}
+
+{% block content %}
+<style>
+    .container {
+        max-width: 500px;
+        padding: 40px;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        border: 1px solid #dcdcdc;
+        animation: slideInUp 0.8s ease-out;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    .recommendation-card {
+        position: relative;
+        width: 100%;
+        height: 400px;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transform-origin: center center;
+        transition: transform 0.3s ease-in-out; /* Adjusted transition for smoother exit */
+        cursor: grab;
+        overflow: hidden;
+        user-select: none;
+    }
+
+    .recommendation-card.swiping {
+        transition: none; /* Disable transition while dragging for a responsive feel */
+    }
+
+    .card-image {
+        font-size: 5rem;
+        margin-top: 20px;
+    }
+
+    .card-content {
+        text-align: left;
+        padding: 20px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .card-content h3 {
+        margin: 0;
+        font-size: 1.5rem;
+        color: #007bff;
+        text-align: center;
+    }
+
+    .card-content p {
+        margin: 10px 0;
+        font-size: 1rem;
+        color: #555;
+    }
+
+    .overlay-label {
+        position: absolute;
+        top: 20px;
+        padding: 5px 15px;
+        border: 2px solid;
+        border-radius: 5px;
+        font-weight: bold;
+        opacity: 0;
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .overlay-label.like {
+        right: 20px;
+        border-color: #28a745;
+        color: #28a745;
+        transform: rotate(20deg);
+    }
+
+    .overlay-label.nope {
+        left: 20px;
+        border-color: #dc3545;
+        color: #dc3545;
+        transform: rotate(-20deg);
+    }
+
+    .actions {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .action-btn {
+        border: none;
+        padding: 15px;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: background 0.3s, transform 0.2s;
+    }
+    
+    .action-btn:hover {
+        transform: scale(1.1);
+    }
+
+    .action-btn.no-btn {
+        background: #dc3545;
+        color: white;
+    }
+
+    .action-btn.yes-btn {
+        background: #28a745;
+        color: white;
+    }
+</style>
+
+<div class="container">
+    {% if recommendation %}
+    <div class="recommendation-card" id="swipeCard">
+        <div class="card-image">
+            <span class="icon">💼</span>
+        </div>
+        <div class="card-content">
+            <h3>{{ recommendation['title'] }}</h3>
+            <p><strong>{{ _.sector_label }}:</strong> {{ recommendation['sector'] }}</p>
+            <p>📍 {{ _.location_label }}: {{ recommendation['location'] }}</p>
+            <p>⏰ {{ _.duration_label }}: {{ recommendation['duration'] }} {{ _.months_text }}</p>
+            <p>💰 {{ _.stipend_label }}: {{ recommendation['stipend'] }}</p>
+        </div>
+        <div class="overlay-label like" id="likeLabel">{{ _.like_label }}</div>
+        <div class="overlay-label nope" id="nopeLabel">{{ _.nope_label }}</div>
+    </div>
+    <div class="actions">
+        <form id="dislikeForm" action="{{ url_for('next_recommendation') }}" method="post" style="display:inline;">
+            <input type="hidden" name="action" value="dislike">
+            <button type="submit" class="action-btn no-btn">❌</button>
+        </form>
+        <form id="likeForm" action="{{ url_for('next_recommendation') }}" method="post" style="display:inline;">
+            <input type="hidden" name="action" value="like">
+            <input type="hidden" name="title" value="{{ recommendation['title'] }}">
+            <input type="hidden" name="sector" value="{{ recommendation['sector'] }}">
+            <input type="hidden" name="location" value="{{ recommendation['location'] }}">
+            <input type="hidden" name="duration" value="{{ recommendation['duration'] }}">
+            <input type="hidden" name="stipend" value="{{ recommendation['stipend'] }}">
+            <button type="submit" class="action-btn yes-btn">✔️</button>
+        </form>
+    </div>
+    {% else %}
+    <div class="container">
+        <h2 style="color: #ff5a5f;">{{ _.no_more_recs }}</h2>
+        <p style="color: #555;">{{ _.no_more_recs_msg }}</p>
+        <a href="{{ url_for('predict') }}" style="display: inline-block; padding: 12px 25px; margin-top: 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 8px; font-weight: 600;">
+            {{ _.find_button }}
+        </a>
+    </div>
+    {% endif %}
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const card = document.getElementById('swipeCard');
+            if (!card) return;
+
+            const likeForm = document.getElementById('likeForm');
+            const dislikeForm = document.getElementById('dislikeForm');
+            const likeLabel = document.getElementById('likeLabel');
+            const nopeLabel = document.getElementById('nopeLabel');
+
+            let isDragging = false;
+            let startX = 0;
+            let currentX = 0;
+            const swipeThreshold = 75;
+
+            const handleStart = (e) => {
+                isDragging = true;
+                startX = e.type.startsWith('touch') ? e.touches[0].clientX : e.clientX;
+                card.classList.add('swiping');
+                card.style.transition = 'none'; // Disable CSS transition during drag
+            };
+
+            const handleMove = (e) => {
+                if (!isDragging) return;
+                currentX = e.type.startsWith('touch') ? e.touches[0].clientX : e.clientX;
+                const deltaX = currentX - startX;
+                const rotate = deltaX / 10;
+                
+                card.style.transform = `translateX(${deltaX}px) rotate(${rotate}deg)`;
+
+                const opacity = Math.min(Math.abs(deltaX) / swipeThreshold, 1.5);
+                if (deltaX > 0) {
+                    likeLabel.style.opacity = opacity;
+                    nopeLabel.style.opacity = 0;
+                } else {
+                    nopeLabel.style.opacity = opacity;
+                    likeLabel.style.opacity = 0;
+                }
+            };
+
+            const handleEnd = (e) => {
+                isDragging = false;
+                card.classList.remove('swiping');
+                card.style.transition = 'transform 0.3s ease-in-out'; // Re-enable CSS transition
+
+                const finalX = e.type.startsWith('touch') ? e.changedTouches[0].clientX : e.clientX;
+                const deltaX = finalX - startX;
+                
+                if (deltaX > swipeThreshold) {
+                    card.style.transform = `translateX(500px) rotate(30deg)`;
+                    setTimeout(() => likeForm.submit(), 300);
+                } else if (deltaX < -swipeThreshold) {
+                    card.style.transform = `translateX(-500px) rotate(-30deg)`;
+                    setTimeout(() => dislikeForm.submit(), 300);
+                } else {
+                    card.style.transform = `translateX(0) rotate(0)`;
+                }
+                
+                likeLabel.style.opacity = 0;
+                nopeLabel.style.opacity = 0;
+            };
+
+            // Event listeners
+            card.addEventListener('mousedown', handleStart);
+            document.addEventListener('mousemove', handleMove); // Listen on document for better drag
+            document.addEventListener('mouseup', handleEnd);
+
+            card.addEventListener('touchstart', (e) => handleStart(e));
+            document.addEventListener('touchmove', (e) => handleMove(e));
+            document.addEventListener('touchend', (e) => handleEnd(e));
+
+            card.addEventListener('dragstart', (e) => e.preventDefault());
+        });
+    </script>
+</div>
+{% endblock %}

@@ -1,0 +1,201 @@
+internship_id,title,sector,required_skills,education_required,location,duration,stipend,deadline
+1,Social Media Manager Intern,Engineering,"['Illustrator', 'SQL', 'Excel', 'HTML']",Post-Graduate,Lucknow,6 months,7416,2025-09-25
+2,NGO Volunteer,Social Work,"['Data Analysis', 'Data Collection', 'Communication', 'Java']",10+2,Remote,5 months,8230,2025-09-12
+3,Finance Intern,Management,"['Leadership', 'CSS']",Graduate,Nagpur,6 months,3183,2025-09-25
+4,Legal Intern,Engineering,"['Excel', 'MS Office']",Diploma,Lucknow,6 months,11818,2025-09-12
+5,Civil Engineer Intern,Law,"['Social Media', 'Communication']",Graduate,Bhopal,6 months,6756,2025-09-20
+6,Research Intern,Management,"['Public Speaking', 'Communication']",Diploma,Bhopal,6 months,7772,2025-09-19
+7,Community Health Worker,Health,"['Data Collection', 'Machine Learning']",10+2,Remote,4 months,10650,2025-09-30
+8,Agriculture Field Assistant,Education,"['Python', 'CSS']",Diploma,Chennai,5 months,14107,2025-09-10
+9,Research Intern,Law,"['C++', 'Excel', 'CSS']",10+2,Kolkata,3 months,4672,2025-09-14
+10,Data Analyst Intern,Agriculture,"['Photoshop', 'Public Speaking']",Post-Graduate,Hyderabad,5 months,14861,2025-09-22
+11,Marketing Assistant,Design,"['SQL', 'Excel', 'Communication', 'First Aid']",10+2,Bhopal,1 months,4955,2025-09-27
+12,NGO Volunteer,Engineering,"['Java', 'Communication']",10+2,Delhi,2 months,4824,2025-09-24
+13,Finance Intern,Health,"['Machine Learning', 'Data Collection', 'Excel']",Post-Graduate,Lucknow,3 months,13955,2025-09-19
+14,Software Developer Intern,Design,"['CSS', 'MS Office']",Post-Graduate,Bhopal,6 months,12217,2025-09-28
+15,Teaching Assistant,Design,"['Java', 'Public Speaking', 'Excel', 'HTML']",Diploma,Hyderabad,6 months,13993,2025-09-11
+16,Agriculture Field Assistant,Social Work,"['Leadership', 'Python']",Diploma,Chennai,2 months,14743,2025-09-27
+17,Software Developer Intern,Management,"['C++', 'Java', 'Field Work']",Graduate,Bhopal,5 months,9539,2025-09-14
+18,HR Intern,Finance,"['Illustrator', 'Data Analysis']",Graduate,Nagpur,4 months,5569,2025-09-21
+19,Marketing Assistant,Education,"['Photoshop', 'Field Work']",Graduate,Bhopal,3 months,11185,2025-09-26
+20,NGO Volunteer,Finance,"['C++', 'Field Work', 'MS Office']",Post-Graduate,Mumbai,6 months,2653,2025-09-19
+21,Research Intern,Social Work,"['Photoshop', 'Illustrator', 'C++']",Post-Graduate,Chennai,6 months,9939,2025-09-13
+22,Marketing Assistant,Finance,"['Public Speaking', 'SQL', 'C++', 'Field Work']",Graduate,Kolkata,5 months,9838,2025-09-26
+23,Finance Intern,Management,"['Photoshop', 'Leadership', 'JavaScript', 'Public Speaking']",Graduate,Bhopal,3 months,13597,2025-09-19
+24,Web Developer Intern,Engineering,"['JavaScript', 'Java', 'Python']",Post-Graduate,Kolkata,4 months,14033,2025-09-21
+25,Software Developer Intern,Health,"['Data Collection', 'Machine Learning', 'MS Office']",Graduate,Mumbai,2 months,7341,2025-09-30
+26,Marketing Assistant,Health,"['First Aid', 'C++']",10+2,Mumbai,1 months,14331,2025-09-21
+27,Electrical Engineer Intern,Finance,"['Machine Learning', 'Data Analysis', 'C++', 'Communication']",10+2,Hyderabad,1 months,14039,2025-09-17
+28,Community Health Worker,Education,"['Java', 'HTML', 'Public Speaking']",Diploma,Bangalore,4 months,5187,2025-09-29
+29,HR Intern,Engineering,"['Python', 'Data Collection']",10+2,Hyderabad,4 months,6828,2025-09-12
+30,Legal Intern,Management,"['SQL', 'Public Speaking', 'Data Collection']",Diploma,Lucknow,3 months,5757,2025-09-23
+31,Mobile App Developer,Social Work,"['JavaScript', 'Field Work', 'Data Analysis']",10+2,Bangalore,1 months,9458,2025-09-22
+32,Marketing Assistant,Education,"['SQL', 'C++']",Post-Graduate,Bangalore,3 months,12308,2025-09-21
+33,Software Developer Intern,Health,"['Field Work', 'Python']",Graduate,Nagpur,5 months,7120,2025-09-10
+34,Data Analyst Intern,Management,"['JavaScript', 'Python', 'Data Analysis', 'Java']",Diploma,Mumbai,2 months,7034,2025-09-17
+35,Content Writer Intern,Finance,"['Field Work', 'Social Media', 'Java']",Post-Graduate,Nagpur,6 months,4161,2025-09-15
+36,Project Coordinator Intern,Education,"['First Aid', 'MS Office']",Post-Graduate,Delhi,4 months,9176,2025-09-18
+37,Web Developer Intern,Education,"['Public Speaking', 'Data Collection', 'Excel']",Post-Graduate,Bangalore,6 months,12336,2025-09-23
+38,HR Intern,Education,"['Excel', 'Leadership', 'Data Analysis', 'MS Office']",Graduate,Remote,6 months,14143,2025-09-15
+39,Graphic Design Intern,IT,"['Java', 'Python', 'Public Speaking', 'Communication']",Post-Graduate,Lucknow,3 months,4161,2025-09-28
+40,Social Media Manager Intern,Education,"['C++', 'SQL']",Graduate,Delhi,6 months,5957,2025-09-14
+41,Graphic Design Intern,Finance,"['MS Office', 'JavaScript', 'CSS', 'First Aid']",Diploma,Bangalore,6 months,9879,2025-09-13
+42,Social Media Manager Intern,Management,"['Java', 'Illustrator', 'Field Work']",Diploma,Lucknow,4 months,8317,2025-09-24
+43,Legal Intern,Agriculture,"['Public Speaking', 'First Aid', 'Field Work']",Post-Graduate,Mumbai,3 months,13060,2025-09-15
+44,Community Health Worker,Finance,"['Machine Learning', 'Field Work']",Post-Graduate,Delhi,4 months,10757,2025-09-18
+45,Software Developer Intern,Law,"['Social Media', 'JavaScript', 'MS Office']",10+2,Bangalore,2 months,5572,2025-09-30
+46,Project Coordinator Intern,Health,"['Python', 'Machine Learning']",Post-Graduate,Remote,4 months,6242,2025-09-28
+47,Teaching Assistant,Health,"['SQL', 'Illustrator']",Diploma,Mumbai,4 months,6294,2025-09-13
+48,Research Intern,Engineering,"['Machine Learning', 'Field Work']",Graduate,Bangalore,2 months,2514,2025-09-18
+49,Research Intern,IT,"['SQL', 'HTML', 'First Aid', 'C++']",Graduate,Bhopal,5 months,10303,2025-09-15
+50,Research Intern,Health,"['Illustrator', 'First Aid']",Diploma,Delhi,1 months,11540,2025-09-12
+51,Software Developer Intern,IT,"['Field Work', 'Data Collection', 'Communication', 'Java']",Graduate,Bhopal,4 months,13614,2025-09-13
+52,Project Coordinator Intern,Social Work,"['Communication', 'C++', 'Social Media', 'HTML']",10+2,Bhopal,2 months,6934,2025-09-13
+53,Electrical Engineer Intern,Education,"['Excel', 'Machine Learning', 'Data Analysis']",Graduate,Nagpur,1 months,7527,2025-09-28
+54,NGO Volunteer,Finance,"['CSS', 'Social Media']",Diploma,Bhopal,5 months,14305,2025-09-11
+55,Mobile App Developer,Design,"['Data Collection', 'JavaScript']",Diploma,Mumbai,2 months,12908,2025-09-12
+56,Marketing Assistant,Design,"['JavaScript', 'C++']",Post-Graduate,Delhi,2 months,12174,2025-09-29
+57,Project Coordinator Intern,Design,"['Illustrator', 'Leadership', 'Social Media']",Graduate,Lucknow,4 months,14023,2025-09-29
+58,Mobile App Developer,Finance,"['Data Analysis', 'Leadership']",Diploma,Nagpur,4 months,8961,2025-09-15
+59,Customer Support Intern,Health,"['Data Collection', 'Photoshop', 'JavaScript', 'Data Analysis']",Graduate,Lucknow,1 months,2866,2025-09-26
+60,Community Health Worker,Health,"['Communication', 'Data Analysis', 'Leadership', 'HTML']",Post-Graduate,Bangalore,1 months,2698,2025-09-12
+61,Social Media Manager Intern,Education,"['Machine Learning', 'Leadership']",Graduate,Kolkata,1 months,9626,2025-09-26
+62,Customer Support Intern,Finance,"['Excel', 'Data Collection', 'Leadership', 'Public Speaking']",Post-Graduate,Nagpur,4 months,4727,2025-09-24
+63,Mobile App Developer,Social Work,"['C++', 'Illustrator', 'Data Collection']",Graduate,Remote,1 months,4809,2025-09-26
+64,Electrical Engineer Intern,Education,"['Illustrator', 'Data Analysis', 'MS Office', 'C++']",10+2,Chennai,1 months,8882,2025-09-23
+65,Social Media Manager Intern,Management,"['Excel', 'Photoshop']",Post-Graduate,Bhopal,6 months,10422,2025-09-11
+66,NGO Volunteer,Health,"['SQL', 'Communication', 'Data Collection', 'CSS']",Graduate,Bhopal,2 months,4885,2025-09-12
+67,Civil Engineer Intern,Management,"['Communication', 'Data Analysis', 'JavaScript']",10+2,Bangalore,6 months,7222,2025-09-25
+68,Software Developer Intern,IT,"['Excel', 'HTML', 'Machine Learning', 'Data Analysis']",10+2,Kolkata,1 months,3954,2025-09-16
+69,HR Intern,Social Work,"['Communication', 'C++']",Graduate,Bangalore,6 months,14793,2025-09-25
+70,Data Analyst Intern,Law,"['Leadership', 'Data Collection']",Post-Graduate,Bhopal,1 months,13908,2025-09-12
+71,Finance Intern,Engineering,"['Leadership', 'SQL']",Graduate,Nagpur,5 months,7058,2025-09-23
+72,Agriculture Field Assistant,Finance,"['Illustrator', 'MS Office']",Post-Graduate,Mumbai,5 months,3017,2025-09-20
+73,Agriculture Field Assistant,IT,"['Social Media', 'Illustrator', 'HTML', 'Data Analysis']",Graduate,Remote,4 months,12079,2025-09-10
+74,Agriculture Field Assistant,Law,"['Photoshop', 'JavaScript', 'Public Speaking', 'Java']",Diploma,Mumbai,2 months,4300,2025-09-23
+75,Electrical Engineer Intern,Finance,"['HTML', 'Public Speaking', 'Field Work']",Graduate,Mumbai,6 months,14003,2025-09-29
+76,Data Analyst Intern,Finance,"['Public Speaking', 'JavaScript', 'Leadership', 'Java']",Graduate,Nagpur,4 months,11475,2025-09-25
+77,Electrical Engineer Intern,Law,"['Communication', 'Leadership']",Diploma,Lucknow,5 months,14007,2025-09-22
+78,Agriculture Field Assistant,Social Work,"['Excel', 'Social Media']",Post-Graduate,Mumbai,2 months,7059,2025-09-24
+79,Social Media Manager Intern,Finance,"['Excel', 'C++', 'Data Analysis', 'Leadership']",10+2,Remote,2 months,7240,2025-09-10
+80,Mobile App Developer,Law,"['HTML', 'C++', 'Photoshop']",Graduate,Delhi,4 months,4535,2025-09-23
+81,Agriculture Field Assistant,Social Work,"['Photoshop', 'Data Collection', 'Python']",Post-Graduate,Hyderabad,2 months,14361,2025-09-26
+82,Graphic Design Intern,Finance,"['Field Work', 'Social Media', 'C++']",10+2,Lucknow,3 months,7022,2025-09-15
+83,Research Intern,Management,"['Public Speaking', 'Machine Learning', 'Social Media']",10+2,Remote,4 months,10826,2025-09-19
+84,Social Media Manager Intern,Education,"['Data Analysis', 'HTML', 'First Aid']",Diploma,Mumbai,1 months,10916,2025-09-25
+85,HR Intern,Social Work,"['Social Media', 'HTML', 'Field Work', 'Machine Learning']",Diploma,Kolkata,1 months,12152,2025-09-27
+86,Finance Intern,Agriculture,"['Data Collection', 'Public Speaking']",Post-Graduate,Remote,1 months,12989,2025-09-16
+87,HR Intern,Education,"['Leadership', 'Social Media', 'Illustrator']",Diploma,Mumbai,6 months,11694,2025-09-24
+88,Research Intern,Agriculture,"['JavaScript', 'Public Speaking', 'Communication', 'Leadership']",10+2,Nagpur,4 months,4866,2025-09-15
+89,Customer Support Intern,Management,"['Leadership', 'Data Collection', 'Field Work']",Post-Graduate,Nagpur,1 months,14632,2025-09-13
+90,Mobile App Developer,Education,"['Data Collection', 'CSS']",Graduate,Hyderabad,4 months,13719,2025-09-16
+91,Legal Intern,Education,"['First Aid', 'Communication', 'SQL', 'Social Media']",Graduate,Hyderabad,2 months,5336,2025-09-24
+92,NGO Volunteer,Social Work,"['Social Media', 'Python']",Graduate,Chennai,2 months,6522,2025-09-23
+93,Social Media Manager Intern,Health,"['HTML', 'Leadership']",Diploma,Nagpur,1 months,11556,2025-09-14
+94,HR Intern,Finance,"['MS Office', 'Python']",Post-Graduate,Hyderabad,2 months,5174,2025-09-12
+95,Marketing Assistant,Design,"['C++', 'MS Office', 'Communication']",10+2,Hyderabad,6 months,5627,2025-09-20
+96,Content Writer Intern,Law,"['C++', 'Leadership', 'Public Speaking', 'Data Analysis']",Graduate,Nagpur,4 months,8059,2025-09-28
+97,Data Analyst Intern,Engineering,"['Photoshop', 'Machine Learning', 'JavaScript']",Diploma,Nagpur,1 months,6015,2025-09-25
+98,Mobile App Developer,Education,"['Illustrator', 'Data Analysis']",10+2,Chennai,3 months,5484,2025-09-21
+99,Research Intern,IT,"['Leadership', 'Communication']",Post-Graduate,Chennai,5 months,11146,2025-09-13
+100,NGO Volunteer,IT,"['Illustrator', 'Leadership', 'Python']",10+2,Bhopal,3 months,8682,2025-09-28
+101,Mobile App Developer,Finance,"['Photoshop', 'Illustrator', 'C++', 'Java']",Diploma,Chennai,5 months,11529,2025-09-11
+102,Electrical Engineer Intern,IT,"['Machine Learning', 'Excel']",Graduate,Bangalore,6 months,10606,2025-09-22
+103,Social Media Manager Intern,Design,"['Photoshop', 'Field Work', 'Social Media', 'First Aid']",10+2,Bhopal,2 months,6019,2025-09-25
+104,NGO Volunteer,Design,"['Python', 'Social Media', 'Leadership']",Diploma,Chennai,6 months,2353,2025-09-13
+105,Teaching Assistant,Social Work,"['Public Speaking', 'Excel', 'Field Work', 'HTML']",Graduate,Bangalore,5 months,10870,2025-09-15
+106,Graphic Design Intern,Management,"['Java', 'Data Analysis']",Diploma,Hyderabad,3 months,6805,2025-09-12
+107,Project Coordinator Intern,Law,"['Photoshop', 'Data Collection']",Graduate,Lucknow,1 months,5940,2025-09-16
+108,Project Coordinator Intern,Health,"['Data Collection', 'MS Office', 'CSS']",Graduate,Kolkata,6 months,4012,2025-09-14
+109,Customer Support Intern,Management,"['Illustrator', 'Java']",Graduate,Bhopal,5 months,9479,2025-09-14
+110,Legal Intern,IT,"['Excel', 'JavaScript', 'Python']",Post-Graduate,Nagpur,2 months,12042,2025-09-24
+111,Customer Support Intern,Finance,"['Python', 'First Aid', 'Communication', 'Data Collection']",Graduate,Nagpur,5 months,13024,2025-09-27
+112,Agriculture Field Assistant,Engineering,"['JavaScript', 'Illustrator', 'Excel']",Post-Graduate,Bangalore,3 months,2484,2025-09-10
+113,Project Coordinator Intern,Education,"['Photoshop', 'Leadership', 'JavaScript']",Diploma,Chennai,4 months,8901,2025-09-26
+114,Teaching Assistant,Health,"['C++', 'SQL', 'Field Work', 'Photoshop']",Graduate,Remote,5 months,2101,2025-09-15
+115,Customer Support Intern,Management,"['Public Speaking', 'JavaScript', 'HTML']",10+2,Delhi,5 months,2183,2025-09-30
+116,Marketing Assistant,Design,"['Social Media', 'HTML', 'Communication']",Post-Graduate,Bhopal,5 months,9605,2025-09-18
+117,Project Coordinator Intern,Social Work,"['MS Office', 'Excel']",Post-Graduate,Chennai,6 months,14169,2025-09-29
+118,Finance Intern,IT,"['Python', 'Machine Learning', 'Social Media', 'JavaScript']",Graduate,Hyderabad,5 months,14590,2025-09-18
+119,Agriculture Field Assistant,Finance,"['HTML', 'Excel', 'First Aid', 'Illustrator']",Post-Graduate,Hyderabad,4 months,4306,2025-09-29
+120,HR Intern,Management,"['CSS', 'Communication']",Graduate,Hyderabad,6 months,10664,2025-09-15
+121,Legal Intern,Health,"['JavaScript', 'Data Collection']",Post-Graduate,Chennai,1 months,4094,2025-09-11
+122,Teaching Assistant,Law,"['HTML', 'Photoshop', 'Leadership', 'Data Analysis']",10+2,Remote,4 months,12474,2025-09-11
+123,Project Coordinator Intern,IT,"['Excel', 'JavaScript']",10+2,Bangalore,4 months,2658,2025-09-28
+124,Community Health Worker,Health,"['Social Media', 'SQL', 'Illustrator']",Post-Graduate,Hyderabad,5 months,4584,2025-09-26
+125,Legal Intern,Education,"['Data Analysis', 'Field Work']",Graduate,Bangalore,2 months,4266,2025-09-12
+126,Web Developer Intern,Engineering,"['Java', 'Communication', 'Leadership']",Post-Graduate,Mumbai,2 months,10366,2025-09-26
+127,Content Writer Intern,Agriculture,"['MS Office', 'Communication', 'Python', 'Public Speaking']",Graduate,Bangalore,3 months,7210,2025-09-11
+128,Finance Intern,Management,"['Java', 'Leadership']",Post-Graduate,Bangalore,1 months,3769,2025-09-20
+129,Project Coordinator Intern,Agriculture,"['C++', 'Machine Learning']",Graduate,Lucknow,6 months,5446,2025-09-14
+130,Marketing Assistant,Design,"['Photoshop', 'CSS', 'Data Analysis', 'First Aid']",Diploma,Lucknow,4 months,11067,2025-09-23
+131,Software Developer Intern,Social Work,"['Illustrator', 'Data Analysis', 'Field Work', 'Social Media']",10+2,Delhi,3 months,5291,2025-09-25
+132,Community Health Worker,Design,"['HTML', 'Illustrator', 'C++']",Post-Graduate,Kolkata,2 months,14262,2025-09-24
+133,Legal Intern,Management,"['Field Work', 'Excel', 'Leadership', 'Communication']",Post-Graduate,Hyderabad,1 months,9444,2025-09-23
+134,Data Analyst Intern,Law,"['Communication', 'JavaScript', 'Machine Learning', 'Field Work']",Graduate,Mumbai,5 months,2516,2025-09-25
+135,Web Developer Intern,Management,"['Data Collection', 'Communication', 'Illustrator', 'First Aid']",Graduate,Delhi,3 months,3085,2025-09-12
+136,Software Developer Intern,Management,"['CSS', 'Public Speaking']",Post-Graduate,Delhi,6 months,9556,2025-09-19
+137,Software Developer Intern,Management,"['Machine Learning', 'Data Collection', 'Java', 'First Aid']",10+2,Bhopal,3 months,3037,2025-09-14
+138,Mobile App Developer,Social Work,"['Machine Learning', 'CSS']",10+2,Bangalore,3 months,4329,2025-09-13
+139,Software Developer Intern,IT,"['Data Analysis', 'Machine Learning']",Graduate,Remote,5 months,7331,2025-09-24
+140,NGO Volunteer,Education,"['JavaScript', 'Java', 'Leadership', 'Excel']",10+2,Hyderabad,5 months,14226,2025-09-27
+141,Social Media Manager Intern,Social Work,"['Field Work', 'Social Media']",10+2,Mumbai,3 months,7650,2025-09-26
+142,Content Writer Intern,Health,"['MS Office', 'Machine Learning', 'HTML']",10+2,Lucknow,6 months,3324,2025-09-21
+143,Graphic Design Intern,Finance,"['Communication', 'Photoshop']",Graduate,Nagpur,4 months,15000,2025-09-28
+144,Social Media Manager Intern,Management,"['C++', 'HTML']",10+2,Bhopal,1 months,7000,2025-09-29
+145,Mobile App Developer,Social Work,"['Public Speaking', 'Excel', 'First Aid']",10+2,Hyderabad,2 months,8744,2025-09-18
+146,Marketing Assistant,Law,"['Social Media', 'Illustrator', 'JavaScript']",Diploma,Chennai,5 months,9988,2025-09-18
+147,Software Developer Intern,Management,"['Excel', 'Social Media', 'Data Collection', 'JavaScript']",10+2,Bangalore,5 months,3054,2025-09-21
+148,Graphic Design Intern,Law,"['C++', 'HTML', 'Field Work', 'Photoshop']",Diploma,Hyderabad,4 months,3362,2025-09-12
+149,Research Intern,IT,"['Data Collection', 'Communication']",Graduate,Remote,6 months,10180,2025-09-12
+150,Data Analyst Intern,Management,"['JavaScript', 'Communication', 'Data Collection', 'CSS']",Diploma,Bhopal,5 months,6288,2025-09-26
+151,Marketing Assistant,Finance,"['Data Analysis', 'Python', 'Social Media']",Post-Graduate,Delhi,2 months,3705,2025-09-18
+152,Software Developer Intern,Design,"['First Aid', 'Machine Learning', 'HTML']",Diploma,Mumbai,5 months,3418,2025-09-27
+153,Finance Intern,Design,"['Illustrator', 'Photoshop', 'JavaScript', 'Java']",Graduate,Kolkata,4 months,7689,2025-09-10
+154,Data Analyst Intern,Education,"['Field Work', 'Illustrator', 'Python']",Post-Graduate,Lucknow,5 months,2990,2025-09-26
+155,Social Media Manager Intern,Education,"['HTML', 'Photoshop', 'MS Office', 'Public Speaking']",10+2,Mumbai,5 months,5908,2025-09-11
+156,Data Analyst Intern,Design,"['Data Collection', 'Python']",Diploma,Bhopal,6 months,10761,2025-09-28
+157,Data Analyst Intern,Management,"['Social Media', 'JavaScript', 'Data Collection']",Post-Graduate,Hyderabad,4 months,6510,2025-09-26
+158,NGO Volunteer,Health,"['Data Analysis', 'Python', 'Machine Learning', 'Field Work']",Post-Graduate,Bhopal,5 months,9392,2025-09-10
+159,Electrical Engineer Intern,Design,"['First Aid', 'Leadership', 'Public Speaking', 'Python']",Post-Graduate,Delhi,4 months,2230,2025-09-26
+160,Marketing Assistant,Engineering,"['Data Collection', 'Field Work', 'Java', 'SQL']",10+2,Nagpur,2 months,3210,2025-09-24
+161,HR Intern,Law,"['Photoshop', 'Field Work', 'HTML', 'First Aid']",Graduate,Chennai,3 months,4445,2025-09-25
+162,Legal Intern,IT,"['Illustrator', 'Java']",Diploma,Hyderabad,1 months,9866,2025-09-24
+163,Teaching Assistant,Law,"['Communication', 'Machine Learning']",10+2,Lucknow,3 months,3430,2025-09-23
+164,Graphic Design Intern,Social Work,"['MS Office', 'Social Media']",Diploma,Remote,1 months,7410,2025-09-25
+165,Finance Intern,Management,"['Communication', 'CSS', 'Field Work', 'First Aid']",Graduate,Remote,6 months,11537,2025-09-28
+166,HR Intern,Design,"['Machine Learning', 'Social Media', 'Excel']",Post-Graduate,Bangalore,3 months,7547,2025-09-10
+167,Graphic Design Intern,IT,"['CSS', 'Excel']",Diploma,Bangalore,4 months,10627,2025-09-20
+168,Social Media Manager Intern,Social Work,"['C++', 'Data Analysis', 'MS Office', 'JavaScript']",Diploma,Chennai,4 months,12224,2025-09-29
+169,Marketing Assistant,Finance,"['CSS', 'Excel']",Post-Graduate,Hyderabad,6 months,8311,2025-09-15
+170,Teaching Assistant,Finance,"['Field Work', 'JavaScript']",Diploma,Bhopal,4 months,10284,2025-09-30
+171,Graphic Design Intern,Finance,"['SQL', 'HTML', 'JavaScript']",Diploma,Hyderabad,6 months,14022,2025-09-22
+172,HR Intern,Management,"['HTML', 'Machine Learning']",Diploma,Kolkata,3 months,10668,2025-09-29
+173,Electrical Engineer Intern,IT,"['Excel', 'C++', 'Machine Learning', 'Field Work']",Post-Graduate,Remote,2 months,12169,2025-09-13
+174,Teaching Assistant,Agriculture,"['Data Analysis', 'Excel']",Post-Graduate,Remote,5 months,3113,2025-09-17
+175,Social Media Manager Intern,Health,"['Python', 'First Aid', 'HTML']",10+2,Nagpur,4 months,6883,2025-09-25
+176,HR Intern,Education,"['C++', 'Java']",Graduate,Bhopal,2 months,12544,2025-09-27
+177,NGO Volunteer,Management,"['SQL', 'HTML', 'Leadership']",Post-Graduate,Mumbai,2 months,13812,2025-09-10
+178,Social Media Manager Intern,Education,"['C++', 'Social Media', 'SQL', 'Excel']",Graduate,Bangalore,1 months,10943,2025-09-27
+179,Graphic Design Intern,IT,"['Java', 'HTML', 'CSS']",Post-Graduate,Nagpur,1 months,7875,2025-09-18
+180,Data Analyst Intern,Finance,"['Machine Learning', 'Leadership']",Post-Graduate,Bhopal,5 months,6907,2025-09-12
+181,Teaching Assistant,Social Work,"['SQL', 'Social Media', 'Machine Learning']",10+2,Lucknow,4 months,8268,2025-09-16
+182,HR Intern,Agriculture,"['Excel', 'HTML', 'JavaScript']",Diploma,Kolkata,6 months,6098,2025-09-23
+183,Marketing Assistant,Social Work,"['Photoshop', 'Machine Learning', 'C++']",Diploma,Mumbai,2 months,9685,2025-09-28
+184,Teaching Assistant,Law,"['Illustrator', 'Data Collection', 'Data Analysis', 'Communication']",Post-Graduate,Kolkata,3 months,7018,2025-09-28
+185,Agriculture Field Assistant,Social Work,"['Communication', 'JavaScript', 'Leadership', 'Field Work']",Diploma,Bangalore,2 months,4169,2025-09-15
+186,Research Intern,Management,"['Excel', 'Illustrator']",Diploma,Mumbai,6 months,6795,2025-09-26
+187,Graphic Design Intern,Finance,"['MS Office', 'SQL', 'Social Media', 'Java']",10+2,Delhi,1 months,11352,2025-09-14
+188,Agriculture Field Assistant,Education,"['SQL', 'Photoshop', 'MS Office', 'Illustrator']",10+2,Kolkata,5 months,4760,2025-09-23
+189,Marketing Assistant,Education,"['C++', 'Data Collection', 'Data Analysis', 'Photoshop']",Graduate,Nagpur,1 months,7424,2025-09-20
+190,Civil Engineer Intern,Management,"['SQL', 'HTML', 'Machine Learning']",Graduate,Bhopal,3 months,14130,2025-09-13
+191,Web Developer Intern,Social Work,"['Photoshop', 'JavaScript', 'Data Collection']",Diploma,Hyderabad,1 months,8020,2025-09-19
+192,Civil Engineer Intern,Law,"['Field Work', 'Social Media']",10+2,Mumbai,4 months,2860,2025-09-11
+193,Finance Intern,Social Work,"['First Aid', 'SQL', 'Field Work']",Diploma,Delhi,3 months,4990,2025-09-21
+194,Project Coordinator Intern,Finance,"['Social Media', 'Illustrator', 'Public Speaking']",Post-Graduate,Lucknow,2 months,2987,2025-09-16
+195,Social Media Manager Intern,Education,"['Public Speaking', 'JavaScript']",10+2,Bangalore,5 months,4239,2025-09-25
+196,Electrical Engineer Intern,Finance,"['C++', 'CSS']",Graduate,Nagpur,4 months,6705,2025-09-13
+197,Content Writer Intern,Engineering,"['SQL', 'MS Office']",10+2,Kolkata,3 months,9594,2025-09-10
+198,Community Health Worker,Finance,"['HTML', 'Python']",10+2,Bangalore,4 months,5705,2025-09-23
+199,NGO Volunteer,Law,"['Illustrator', 'Machine Learning']",Graduate,Hyderabad,1 months,4926,2025-09-18
+200,Electrical Engineer Intern,Design,"['Photoshop', 'Public Speaking', 'First Aid']",Diploma,Kolkata,1 months,14615,2025-09-23

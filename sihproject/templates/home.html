@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+
+{% block title %}Home - {{ _.title }}{% endblock %}
+
+{% block content %}
+<style>
+    /* Styles specific to the Home page content */
+    .hero-section {
+        max-width: 800px;
+        text-align: center;
+        margin-bottom: 40px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 15px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        animation: slideInTop 0.8s ease-out;
+    }
+
+    @keyframes slideInTop {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-title {
+        color: #007bff;
+        font-weight: 800;
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+    }
+
+    .hero-slogan {
+        color: #34495e;
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
+
+    .feature-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        max-width: 900px;
+        margin-top: 20px;
+    }
+
+    .feature-card {
+        flex: 1 1 250px; /* Allows cards to wrap on small screens */
+        padding: 30px;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        text-align: center;
+        transition: transform 0.3s, box-shadow 0.3s;
+        min-height: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .feature-icon {
+        font-size: 3rem;
+        color: #007bff;
+        margin-bottom: 15px;
+    }
+
+    .feature-title {
+        font-weight: 700;
+        color: #2c3e50;
+        margin-bottom: 10px;
+    }
+
+    .cta-button {
+        display: inline-block;
+        padding: 15px 30px;
+        margin-top: 40px;
+        background: linear-gradient(45deg, #007bff, #0056b3); /* Attractive gradient */
+        color: white;
+        text-decoration: none;
+        border-radius: 50px; /* Pill shape */
+        font-weight: 700;
+        font-size: 1.2rem;
+        transition: opacity 0.3s, transform 0.2s;
+        box-shadow: 0 4px 10px rgba(0, 123, 255, 0.4);
+    }
+
+    .cta-button:hover {
+        opacity: 0.9;
+        transform: scale(1.02);
+    }
+
+    @media (max-width: 600px) {
+        .hero-title {
+            font-size: 2rem;
+        }
+        .hero-slogan {
+            font-size: 1rem;
+        }
+        .feature-grid {
+            gap: 15px;
+        }
+        .feature-card {
+            flex-basis: 100%;
+        }
+    }
+</style>
+
+<div class="hero-section">
+    <h1 class="hero-title">{{ _.welcome_message }} {{ session['username'] }}!</h1>
+    <p class="hero-slogan">
+        {{ _.pm_slogan_part1 }} <span style="font-weight: 700;">{{ _.pm_slogan_highlight }}</span> {{ _.pm_slogan_part2 }}
+    </p>
+</div>
+
+<div class="feature-grid">
+    <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-bullseye"></i></div>
+        <h2 class="feature-title">{{ _.predict_link }}</h2>
+        <p style="color: #7f8c8d;">{{ _.predict_pm_description }}</p>
+    </div>
+
+    <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+        <h2 class="feature-title">{{ _.dashboard_link }}</h2>
+        <p style="color: #7f8c8d;">{{ _.dashboard_pm_description }}</p>
+    </div>
+
+    <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-graduation-cap"></i></div>
+        <h2 class="feature-title">{{ _.shortlist_link }}</h2>
+        <p style="color: #7f8c8d;">{{ _.shortlist_pm_description }}</p>
+    </div>
+</div>
+
+<a href="{{ url_for('predict') }}" class="cta-button">
+    {{ _.start_search_button }} <i class="fas fa-arrow-right"></i>
+</a>
+{% endblock %}

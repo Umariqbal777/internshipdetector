@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Home - {{ _.title }}{% endblock %}
+
+{% block content %}
+<div class="container" style="text-align: center; max-width: 500px; padding: 40px; background: rgba(255, 255, 255, 0.95); border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); border: 1px solid #dcdcdc; animation: slideInUp 0.8s ease-out; box-sizing: border-box;">
+    <h1 style="color: #007bff; font-weight: 700;">{{ _.welcome_message }} {{ session['username'] }}!</h1>
+    <p style="color: #555; font-size: 1.1rem; margin-top: 10px;">{{ _.home_slogan }}</p>
+    <a href="{{ url_for('predict') }}" style="display: inline-block; padding: 15px 30px; margin-top: 30px; background-color: #007bff; color: white; text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 1.2rem; transition: background-color 0.3s, transform 0.2s;">
+        {{ _.start_search_button }} ✨
+    </a>
+</div>
+
+<style>
+    @media (max-width: 600px) {
+        .container {
+            padding: 20px;
+        }
+        .container a {
+            font-size: 1rem;
+            padding: 12px 25px;
+        }
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="{{ current_lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ _.title }}{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f0f2f6 0%, #d8e2ed 100%);
+            color: #2c3e50;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            animation: fadeInBackground 1s ease-in-out;
+            overflow-x: hidden;
+        }
+
+        @keyframes fadeInBackground {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .navbar {
+            width: 100%;
+            max-width: 900px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            backdrop-filter: blur(5px);
+            border: 1px solid #dcdcdc;
+            position: relative; 
+        }
+
+        .navbar-logo {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        /* Compact/Icon-Only Link Styling */
+        .navbar-links a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 600;
+            transition: color 0.3s, transform 0.2s;
+            position: relative;
+            padding: 5px 8px; 
+            border-radius: 5px;
+            font-size: 1.1rem; 
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #007bff;
+            transition: width 0.3s;
+        }
+
+        .navbar-links a:hover {
+            color: #007bff;
+        }
+
+        .navbar-links a:hover::after {
+            width: 80%;
+        }
+
+        .logout-btn {
+            background: #ff5a5f;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 0.9rem;
+            text-decoration: none;
+        }
+
+        .logout-btn:hover {
+            background: #e04a4f;
+        }
+        
+        /* --- NOTIFICATION BELL DROPDOWN --- */
+        .notification-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .notification-button {
+            background: none;
+            border: none;
+            color: #555;
+            font-size: 1.3rem;
+            cursor: pointer;
+            padding: 5px;
+            transition: color 0.3s, transform 0.1s;
+            position: relative;
+        }
+
+        .notification-button:hover {
+            color: #007bff;
+            transform: scale(1.05);
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: 0;
+            right: -5px;
+            background: #ff5a5f;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            line-height: 1;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .flash-message-container {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: white;
+            min-width: 300px;
+            max-width: 400px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 20;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .notification-dropdown:hover .flash-message-container {
+            display: block; 
+        }
+        
+        /* Flash message styling inside the dropdown */
+        .flash-message {
+            text-align: left;
+            padding: 12px;
+            margin: 0; 
+            border-radius: 0;
+            font-weight: 500;
+            width: 100%; 
+            box-sizing: border-box;
+            border-bottom: 1px solid #eee; 
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .flash-message i {
+            min-width: 15px;
+        }
+
+        .flash-message:last-child {
+            border-bottom: none;
+        }
+
+        .flash-message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border-left: 5px solid #ff5a5f;
+        }
+        .flash-message.info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border-left: 5px solid #007bff;
+        }
+        .flash-message.success {
+            background-color: #d4edda;
+            color: #155724;
+            border-left: 5px solid #28a745;
+        }
+        /* --- END NOTIFICATION BELL DROPDOWN --- */
+
+        /* --- LANGUAGE DROPDOWN --- */
+        .language-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .language-button {
+            background-color: #f0f0f0;
+            color: #555;
+            padding: 8px 10px; 
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            margin-left: 5px; 
+        }
+
+        .language-button:hover {
+            background-color: #e0e0e0;
+        }
+
+        .language-options {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: white;
+            min-width: 120px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 10;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .language-dropdown:hover .language-options {
+            display: block;
+        }
+
+        .language-options a {
+            color: #333;
+            padding: 10px 15px;
+            text-decoration: none;
+            display: block;
+            font-weight: 400;
+            transition: background-color 0.2s;
+            font-size: 0.9rem;
+        }
+        /* Override navbar link styles for dropdown items */
+        .language-options a::after {
+            display: none; 
+        }
+
+        .language-options a:hover {
+            background-color: #f0f8ff;
+            color: #007bff;
+        }
+        
+        .language-options a.active {
+            background-color: #007bff;
+            color: white;
+            font-weight: 600;
+        }
+        /* --- END LANGUAGE DROPDOWN --- */
+
+        .main-content {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+                padding: 15px;
+            }
+            .navbar-links {
+                margin-top: 15px;
+                flex-direction: row; 
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+                text-align: center;
+            }
+            .navbar-links a {
+                font-size: 1.2rem; 
+                padding: 5px;
+            }
+
+            /* Center the dropdowns on mobile */
+            .language-dropdown,
+            .notification-dropdown {
+                position: static; 
+            }
+
+            .language-options,
+            .flash-message-container {
+                position: absolute; 
+                top: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                right: auto;
+                min-width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="{{ url_for('home') }}" class="navbar-logo" title="{{ _.title }}">{{ _.title }}</a>
+        <div class="navbar-links">
+            
+            <a href="{{ url_for('home') }}" title="{{ _.home_link }}"><i class="fas fa-home"></i></a>
+            <a href="{{ url_for('dashboard') }}" title="{{ _.dashboard_link }}"><i class="fas fa-chart-line"></i></a>
+            <a href="{{ url_for('predict') }}" title="{{ _.predict_link }}"><i class="fas fa-bullseye"></i></a>
+            <a href="{{ url_for('shortlist') }}" title="{{ _.shortlist_link }}"><i class="fas fa-thumbtack"></i></a>
+            
+            <a href="{{ url_for('logout') }}" class="logout-btn" title="{{ _.logout_button }}">{{ _.logout_button }}</a>
+            
+            <div class="notification-dropdown">
+                <button class="notification-button" title="Notifications">
+                    <i class="fas fa-bell"></i>
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                    <span class="notification-badge">{{ messages | length }}</span>
+                    {% endif %}
+                    {% endwith %}
+                </button>
+                <div class="flash-message-container">
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                        <div class="flash-message {{ category }}">
+                            <i class="fas {% if category == 'error' %}fa-exclamation-triangle{% elif category == 'success' %}fa-check-circle{% else %}fa-info-circle{% endif %}"></i>
+                            {{ message }}
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="flash-message info" style="text-align: center; border-left: none;">
+                            <i class="fas fa-comment"></i> No new notifications.
+                        </div>
+                    {% endif %}
+                    {% endwith %}
+                </div>
+            </div>
+
+            <div class="language-dropdown">
+                <button class="language-button" title="Change Language">
+                    <i class="fas fa-globe"></i> {{ current_lang | upper }} 
+                    <i class="fas fa-caret-down"></i>
+                </button>
+                <div class="language-options">
+                    {% for lang in available_langs %}
+                    <a href="{{ url_for('set_language', lang_code=lang.code) }}" class="{{ 'active' if current_lang == lang.code }}">
+                        {{ lang.name }}
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
